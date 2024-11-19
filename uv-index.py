@@ -20,27 +20,25 @@ from loguru import logger
 index_urls = [
     # 官方
     # "https://pypi.org/simple/",
-    # 外网高速
+    # 高速
+    "https://mirrors.aliyun.com/pypi/simple/",
+    "https://mirrors.tencent.com/pypi/simple/",
     "https://mirror.nju.edu.cn/pypi/web/simple/",
     "https://mirrors.sustech.edu.cn/pypi/web/simple/",
+    "https://mirrors.ustc.edu.cn/pypi/web/simple/",
+    "https://mirrors.jlu.edu.cn/pypi/web/simple/",
+    "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/",
     "https://mirrors.pku.edu.cn/pypi/web/simple/",
-    "https://mirrors.bfsu.edu.cn/pypi/web/simple/",
+    "https://mirrors.zju.edu.cn/pypi/web/simple/",
     # 内网
     # "http://mirrors.cloud.aliyuncs.com/pypi/simple/",
     # "http://mirrors.tencentyun.com/pypi/simple/",
-    # 外网限速, 内网高速
-    # "https://mirrors.cloud.tencent.com/pypi/simple/",
-    # 限速
-    # "https://mirrors.aliyun.com/pypi/simple/",
-    # "https://mirrors.tencent.com/pypi/simple/",
-    # "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/",
+    # 低速
+    # "https://mirrors.bfsu.edu.cn/pypi/web/simple/",
     # "https://mirrors.neusoft.edu.cn/pypi/web/simple/",
     # "https://mirrors.njtech.edu.cn/pypi/web/simple/",
     # "https://mirror.nyist.edu.cn/pypi/web/simple/",
-    # "https://mirrors.ustc.edu.cn/pypi/web/simple/",
     # "https://mirror.sjtu.edu.cn/pypi/web/simple/",
-    # "https://mirrors.zju.edu.cn/pypi/web/simple/",
-    # "https://mirrors.jlu.edu.cn/pypi/web/simple/",
 ]
 
 
