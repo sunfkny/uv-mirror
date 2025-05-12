@@ -1,5 +1,5 @@
 ```bash
-uv run --index https://mirrors.aliyun.com/pypi/simple https://raw.githubusercontents.com/sunfkny/uv-index/refs/heads/master/uv-index.py
+uvx --index https://mirrors.aliyun.com/pypi/simple git+https://github.com/sunfkny/uv-mirror all
 # or ssh pipe to server
-cat uv-index.py | ssh server_name uv run --index https://mirrors.aliyun.com/pypi/simple -
+cat main.py | ssh server_name uv run --index https://mirrors.aliyun.com/pypi/simple -
 ```
