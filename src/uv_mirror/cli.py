@@ -1,9 +1,9 @@
-from dataclasses import dataclass
 import difflib
 import os
 import pathlib
 import platform
 import time
+from dataclasses import dataclass
 from typing import Annotated
 from urllib.parse import urljoin
 
@@ -21,26 +21,26 @@ app = typer.Typer(help="UV镜像源管理工具", no_args_is_help=True)
 # PyPI镜像源列表
 index_urls = [
     # 官方
-    # "https://pypi.org/simple/",
+    # "https://pypi.org/simple",
     # 高速
-    "https://mirrors.aliyun.com/pypi/simple/",
-    "https://mirrors.tencent.com/pypi/simple/",
-    "https://mirror.nju.edu.cn/pypi/web/simple/",
-    "https://mirrors.sustech.edu.cn/pypi/web/simple/",
-    "https://mirrors.ustc.edu.cn/pypi/web/simple/",
-    "https://mirrors.jlu.edu.cn/pypi/web/simple/",
-    "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple/",
-    "https://mirrors.pku.edu.cn/pypi/web/simple/",
-    "https://mirrors.zju.edu.cn/pypi/web/simple/",
+    "https://mirrors.aliyun.com/pypi/simple",
+    "https://mirrors.tencent.com/pypi/simple",
+    "https://mirror.nju.edu.cn/pypi/web/simple",
+    "https://mirrors.sustech.edu.cn/pypi/web/simple",
+    "https://mirrors.ustc.edu.cn/pypi/web/simple",
+    "https://mirrors.jlu.edu.cn/pypi/web/simple",
+    "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple",
+    "https://mirrors.pku.edu.cn/pypi/web/simple",
+    "https://mirrors.zju.edu.cn/pypi/web/simple",
     # 内网
-    # "http://mirrors.cloud.aliyuncs.com/pypi/simple/",
-    # "http://mirrors.tencentyun.com/pypi/simple/",
+    # "http://mirrors.cloud.aliyuncs.com/pypi/simple",
+    # "http://mirrors.tencentyun.com/pypi/simple",
     # 低速
-    # "https://mirrors.bfsu.edu.cn/pypi/web/simple/",
-    # "https://mirrors.neusoft.edu.cn/pypi/web/simple/",
-    # "https://mirrors.njtech.edu.cn/pypi/web/simple/",
-    # "https://mirror.nyist.edu.cn/pypi/web/simple/",
-    # "https://mirror.sjtu.edu.cn/pypi/web/simple/",
+    # "https://mirrors.bfsu.edu.cn/pypi/web/simple",
+    # "https://mirrors.neusoft.edu.cn/pypi/web/simple",
+    # "https://mirrors.njtech.edu.cn/pypi/web/simple",
+    # "https://mirror.nyist.edu.cn/pypi/web/simple",
+    # "https://mirror.sjtu.edu.cn/pypi/web/simple",
 ]
 
 # Python安装镜像列表
@@ -200,7 +200,7 @@ def test_index_urls(timeout: int = 5):
                 value=index_url,
                 url=urljoin(
                     index_url,
-                    "../packages/be/a6/46e250737d46e955e048f6bbc2948fb22f0de3f3ab828d3803070dc1260e/Django-5.0.tar.gz",
+                    "/../packages/be/a6/46e250737d46e955e048f6bbc2948fb22f0de3f3ab828d3803070dc1260e/Django-5.0.tar.gz",
                 ),
                 timeout=timeout,
             )
