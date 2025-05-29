@@ -5,7 +5,6 @@ import platform
 import time
 from dataclasses import dataclass
 from typing import Annotated
-from urllib.parse import urljoin
 
 import httpx
 import tomlkit
@@ -25,13 +24,13 @@ index_urls = [
     # 高速
     "https://mirrors.aliyun.com/pypi/simple",
     "https://mirrors.tencent.com/pypi/simple",
-    "https://mirror.nju.edu.cn/pypi/web/simple",
-    "https://mirrors.sustech.edu.cn/pypi/web/simple",
-    "https://mirrors.ustc.edu.cn/pypi/web/simple",
-    "https://mirrors.jlu.edu.cn/pypi/web/simple",
-    "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple",
-    "https://mirrors.pku.edu.cn/pypi/web/simple",
-    "https://mirrors.zju.edu.cn/pypi/web/simple",
+    # "https://mirror.nju.edu.cn/pypi/web/simple",
+    # "https://mirrors.sustech.edu.cn/pypi/web/simple",
+    # "https://mirrors.ustc.edu.cn/pypi/web/simple",
+    # "https://mirrors.jlu.edu.cn/pypi/web/simple",
+    # "https://mirrors.tuna.tsinghua.edu.cn/pypi/web/simple",
+    # "https://mirrors.pku.edu.cn/pypi/web/simple",
+    # "https://mirrors.zju.edu.cn/pypi/web/simple",
     # 内网
     # "http://mirrors.cloud.aliyuncs.com/pypi/simple",
     # "http://mirrors.tencentyun.com/pypi/simple",
@@ -80,6 +79,7 @@ def download(value: str, url: str, timeout: int):
             timeout=timeout,
             follow_redirects=True,
         ) as stream:
+            stream.raise_for_status()
             for chunk in stream.iter_bytes(chunk_size=1024):
                 end_at = time.time()
                 if end_at - start_at > timeout:
@@ -195,30 +195,29 @@ def set_python_install_mirror(python_install_mirror: str):
 def test_index_urls(timeout: int = 5):
     results = list[DownloadResult]()
     for index_url in index_urls:
+        url = f"{index_url}/../packages/be/a6/46e250737d46e955e048f6bbc2948fb22f0de3f3ab828d3803070dc1260e/Django-5.0.tar.gz"
         try:
             result = download(
                 value=index_url,
-                url=urljoin(
-                    index_url,
-                    "/../packages/be/a6/46e250737d46e955e048f6bbc2948fb22f0de3f3ab828d3803070dc1260e/Django-5.0.tar.gz",
-                ),
+                url=url,
                 timeout=timeout,
             )
             if result.speed > 0:
                 console.print(f" ● {human_readable_speed(result.speed)} {result.value}")
                 results.append(result)
         except Exception as e:
-            console.print(f" ● {e} {index_url}", style="red bold")
+            console.print(f" ● {repr(e)} {index_url}", style="red bold")
     return results
 
 
 def test_python_install_urls(timeout: int = 5):
     results = list[DownloadResult]()
     for python_install_url in python_install_urls:
+        url = f"{python_install_url}/20250517/cpython-3.13.3+20250517-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz"
         try:
             result = download(
                 value=python_install_url,
-                url=f"{python_install_url}/20250409/cpython-3.13.3%2B20250409-x86_64-unknown-linux-gnu-install_only_stripped.tar.gz",
+                url=url,
                 timeout=timeout,
             )
             if result.speed > 0:
@@ -226,7 +225,7 @@ def test_python_install_urls(timeout: int = 5):
                 results.append(result)
 
         except Exception as e:
-            console.print(f" ● {e} {python_install_url}", style="red bold")
+            console.print(f" ● {repr(e)} {python_install_url}", style="red bold")
     return results
 
 
